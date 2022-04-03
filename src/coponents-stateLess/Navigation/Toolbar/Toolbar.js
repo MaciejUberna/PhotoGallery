@@ -10,9 +10,6 @@ const Toolbar = props => {
     return (
         <Auxiliary>
             <div className={classes.GeneralInfo}>
-                <div className={classes.GeneralInfo__headFiller}>
-
-                </div>
                 <div className={classes.GeneralInfo__photoContainer}>
                     <Photo/>
                 </div>
