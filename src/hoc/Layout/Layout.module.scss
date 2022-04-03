@@ -1,0 +1,11 @@
+@import '../../sass/abstracts/variables.scss';
+
+.Content {
+    margin-top: 34vh;
+}
+
+@media (max-width: $max-width-small-res) {
+    .Content {
+        margin-top: 44vh;
+    }
+}

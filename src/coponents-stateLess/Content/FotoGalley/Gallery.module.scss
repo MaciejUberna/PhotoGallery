@@ -1,0 +1,96 @@
+@import '../../../sass/abstracts/variables.scss';
+
+.Main {
+    width: 100%;
+    height: auto;
+    // background-image: url(../../../assets/images/Projects/ksmonautaMotocykl.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
+
+    & h2 {
+        margin-left: 1rem;
+    }
+
+    &_Container {
+        width: 90%;;
+        display: grid;
+        margin-top: 2rem;
+        grid-template-columns: repeat(3,1fr);;
+        grid-column-gap: 25%;
+
+        &_Name {
+            color: $color-alert;
+        }
+    
+        &_Desc {
+            color: $color-primary;
+            font-size: $text-small;
+        }
+
+        &_Link {
+            color:  yellow;
+            cursor: pointer;
+        }
+    
+        &_Cogs_Left {
+            color: $color-primary;
+            margin-top: 2.8rem;
+            width: 16rem;
+            height: auto;
+        }
+    
+        &_Cogs_Right {
+            color: $color-primary;
+            margin-top: 2.8rem;
+            width: 14rem;
+            height: auto;
+        }
+    }
+
+}
+
+@media (max-width: 1607px) {
+    .Main {
+    
+        &_Container {
+            grid-template-columns: repeat(3,1fr);;
+            grid-column-gap: 10%;
+
+            &_Cogs_Left {
+                margin-top: 33%;
+            }
+                
+            &_Cogs_Right {
+                display: none;
+            }
+        }
+    
+    }   
+}
+
+@media (max-width: $max-width-medium-res) {
+    .Main {
+    
+        &_Container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &_Cogs_Left {
+                margin-top: 0;
+            }
+        }
+    
+    }      
+}
+
+@media (max-width: $max-width-small-res) {
+    .Main {
+        &_Container {
+            &_Desc {
+                font-size: $text-supersmall;
+            }
+        }
+    }
+}

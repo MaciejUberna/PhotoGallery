@@ -1,0 +1,52 @@
+@import '../../../../sass/abstracts/variables.scss';
+
+.NavigationItem {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+
+.NavigationItem a {
+    color: $color-primary;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+.NavigationItem a:hover {
+    color: $color-alert;
+}
+
+.NavigationItem a:active,
+.NavigationItem a.active {
+    color: $color-quaduprary;
+    background-color: $color-secondary-dark;
+    border: 2px solid;
+    border-color: $color-alert;
+}
+
+@media (min-width: $min-width-small-res) {
+    .NavigationItem {
+        margin: 0;
+        left: 0;
+        display: flex;
+        height: 100%;
+        width: auto;
+        align-items: center;
+    }
+    
+    .NavigationItem a {
+        color: $color-tertiary;
+        height: 100%;
+        padding: 10px 10px;
+    }
+    
+    .NavigationItem a:active,
+    .NavigationItem a.active {
+        background-color: $color-secondary-dark;
+        color: $color-quaduprary;
+        border: 4px solid;
+        border-color: $color-alert;
+    }
+}

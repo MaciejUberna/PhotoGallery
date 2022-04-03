@@ -1,0 +1,18 @@
+@import '../../../sass/abstracts/variables.scss';
+
+.Main {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: repeat-y;
+
+    & h2 {
+        align-self: flex-start;
+        color: black;
+        margin-left: 1rem;
+    }
+}

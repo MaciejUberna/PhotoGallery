@@ -1,0 +1,42 @@
+$color-primary: #000055;
+
+$color-secondary-light: #AFA8BA;
+$color-secondary-dark: #7B7485;
+
+$color-tertiary: #FFFFFF;
+
+$color-quaduprary: #E8D5B5;
+
+$color-alert: orangered;
+
+//sizes
+$menu-button-width: 9.5rem;
+
+//text
+
+$text-large: 1.5rem;
+$text-small: 1rem;
+$text-supersmall: 0.8rem;
+
+//round pixel
+
+$round-small: 3px;
+$round-medium: 10rem;
+$round-large: 50%;
+
+//CV header
+
+$photoHeight: 80%;
+$small-res-photoHeight: 90%;
+
+//Media Queries
+
+$max-width-intermediate-res: 1050px;
+$max-width-medium-res: 730px;
+
+$max-width-small-res: 564px;
+$min-width-small-res: 565px;
+
+//csv filters:
+
+$filter-main:  invert(93%) sepia(90%) saturate(2%) hue-rotate(357deg) brightness(108%) contrast(100%);

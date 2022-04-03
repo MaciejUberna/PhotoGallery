@@ -1,0 +1,14 @@
+@import '../../../sass/abstracts/variables.scss';
+
+.GeneralInfo {
+    height: $photoHeight;
+    width: auto;
+    background-color: $color-primary;
+    border-radius: $round-large;
+}
+
+@media (max-width: $max-width-small-res) {
+    .GeneralInfo {
+        height: $small-res-photoHeight;
+    }
+}

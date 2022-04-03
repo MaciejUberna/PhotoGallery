@@ -1,0 +1,99 @@
+@import '../../../../sass/abstracts/variables.scss';
+// @import '../../../../sass//base/base.scss';
+
+.menu {
+    border-radius: $round-small;
+    position: relative;
+    width: $menu-button-width;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-40px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+
+    &_container {
+        top: 23px;
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center ;
+        align-items: flex-start;
+    }
+
+    &_trigger {
+        position: absolute;
+        background: $color-secondary-dark;
+        border-radius: 90px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 4px 6px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        border: none;
+        vertical-align: middle;
+        transition: box-shadow 0.4s ease;
+        margin-left: .7rem; /* Strictly for positioning */
+
+        &:hover {
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+        }
+
+    }
+
+    &_container_active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(40px);
+        background-color: $color-primary;
+    }
+
+    &_container_inactive {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-40px);
+        background-color: $color-primary;
+    }
+
+    & ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    & li {
+        border-bottom: 1px solid $color-secondary-dark;
+        text-decoration: none;
+        color: $color-quaduprary;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+
+        &:hover {
+            border-radius: $round-medium;
+            background-color: $color-secondary-dark;
+        }
+    }
+
+    &_svg {
+        height: 1.2rem;
+    }
+
+    &_triangle {
+        width: 0; 
+        height: 0; 
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;       
+        border-top: 10px solid $color-tertiary;
+    }
+
+    &_svg_text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: $color-tertiary;
+        font-size: 1rem;
+    }
+    
+}

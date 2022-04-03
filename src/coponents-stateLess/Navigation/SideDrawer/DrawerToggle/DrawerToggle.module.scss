@@ -1,0 +1,25 @@
+@import '../../../../sass/abstracts/variables.scss';
+
+.DrawerToggle {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.DrawerToggle div {
+    width: 90%;
+    height: 3px;
+    background-color: $color-tertiary;
+}
+
+@media (min-width: $min-width-small-res) {
+    .DrawerToggle {
+        display: none;
+    }
+}
