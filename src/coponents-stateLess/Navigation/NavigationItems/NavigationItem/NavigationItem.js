@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import classes from './NavigationItem.module.scss';
@@ -18,7 +18,7 @@ const NavigationItem = (props) => {
         //     setEnterAnimation(false);
         //     setExitAnimation(true);
         // }
-    },[props.starter]);
+    },[props.starter,props.pkey]);
 
     return (
         <CSSTransition

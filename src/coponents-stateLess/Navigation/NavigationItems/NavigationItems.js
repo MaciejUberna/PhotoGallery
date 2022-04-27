@@ -19,9 +19,9 @@ const NavigationItems = () => {
     const allButtonsDeepUpdate = (idx, obj, updatePrevButton) => {
         const allButtonsCpy = [];
         for(let i=0;i<allButtons.length;i++) {
-            if(i==idx) {
+            if(i===idx) {
                 allButtonsCpy.push(Object.assign({},obj));
-            } else if (updatePrevButton && i==prevButton.id) {
+            } else if (updatePrevButton && i===prevButton.id) {
                 allButtonsCpy.push(Object.assign({},prevButton));
             } else {
                 allButtonsCpy.push(Object.assign({},allButtons[i]));
@@ -32,9 +32,9 @@ const NavigationItems = () => {
 
     const enterAnimation = (idx) => {
         //this contition checks if button wasn't already animated.
-        if(allButtons[idx].id != prevButton.id) {
+        if(allButtons[idx].id !== prevButton.id) {
             const newButton = {...allButtons[idx], ...{in:true}};
-            if (prevButton.id!="")
+            if (prevButton.id !== -1)
                 setPrevButton({...prevButton,...{in:false}});
             console.log("newButton:",newButton) ;
             console.log("prevButton:",prevButton);
