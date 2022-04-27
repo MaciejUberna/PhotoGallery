@@ -4,16 +4,16 @@ import classes from "./NavigationItems.module.scss";
 import NavigationItem from "./NavigationItem/NavigationItem"
 // ñ
 const data = [
-    {enter:false, exit:false, in:false, id:0, desc:"O mnie",href:"/photo-gallery/info"},
-    {enter:false, exit:false, in:false, id:1, desc:"Galeria zdjęć",href:"/photo-gallery/photos"},
-    {enter:false, exit:false, in:false, id:2, desc:"Edukacja",href:"/photo-gallery/education"}
+    {in:false, id:0, desc:"O mnie",href:"/photo-gallery/info"},
+    {in:false, id:1, desc:"Galeria zdjęć",href:"/photo-gallery/photos"},
+    {in:false, id:2, desc:"Edukacja",href:"/photo-gallery/education"}
 ];
 
 const NavigationItems = () => {
 
     const [allButtons, setAllButtons] = useState(data);
     const [prevButton, setPrevButton] = useState({
-        enter:false, exit:false,in:false, id:-1, desc:"",href:""
+        in:false, id:-1, desc:"",href:""
     });
 
     const allButtonsDeepUpdate = (idx, obj, updatePrevButton) => {
@@ -33,9 +33,9 @@ const NavigationItems = () => {
     const enterAnimation = (idx) => {
         //this contition checks if button wasn't already animated.
         if(allButtons[idx].id != prevButton.id) {
-            const newButton = {...allButtons[idx], ...{in:true,enter:true,exit:false}};
+            const newButton = {...allButtons[idx], ...{in:true}};
             if (prevButton.id!="")
-                setPrevButton({...prevButton,...{in:false,enter:false,exit:true}});
+                setPrevButton({...prevButton,...{in:false}});
             console.log("newButton:",newButton) ;
             console.log("prevButton:",prevButton);
             allButtonsDeepUpdate(idx, newButton, prevButton.id>=0 ? true : false)

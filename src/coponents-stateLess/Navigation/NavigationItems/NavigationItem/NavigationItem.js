@@ -25,8 +25,6 @@ const NavigationItem = (props) => {
             key={props.pkey}
             nodeRef={nodeRef}
             in={props.starter}
-            enter={props.enter}
-            exit={props.exit}
             classNames={{
                 enter: classes.NavigationItemEnter,
                 enterActive: classes.NavigationItemEnterActive,
