@@ -4,26 +4,53 @@
     box-sizing: border-box;
     display: block;
     width: 100%;
-}
 
-.NavigationItem a {
-    color: $color-primary;
-    text-decoration: none;
-    width: 100%;
-    box-sizing: border-box;
-    display: block;
-}
+    &Enter {
+        transform: rotateY(0deg);
+    }
 
-.NavigationItem a:hover {
-    color: $color-alert;
-}
+    &EnterActive {
+        transform: rotateY(180deg);
+        transition: transform 500ms linear
+    }
 
-.NavigationItem a:active,
-.NavigationItem a.active {
-    color: $color-quaduprary;
-    background-color: $color-secondary-dark;
-    border: 2px solid;
-    border-color: $color-alert;
+    &EnterDone {
+        transform: rotateY(180deg);
+    }
+
+    &Exit {
+        transform: rotateY(180deg);
+    }
+
+    &ExitActive {
+        transform: rotateY(0deg);
+        transition: transform 500ms linear;
+    }
+
+    &ExitDone {
+        transform: rotateY(0deg);
+    }
+
+    & a {
+        border-radius: 15%;
+        margin-right: 15px;
+        background-color: $color-secondary-light;
+        color: $color-primary;
+        text-decoration: none;
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    & a:hover {
+        color: $color-alert;
+    }
+
+    & a:active,
+    & a.active {
+        color: $color-quaduprary;
+        background-color: $color-secondary-dark;
+    }
 }
 
 @media (min-width: $min-width-small-res) {
@@ -34,19 +61,18 @@
         height: 100%;
         width: auto;
         align-items: center;
-    }
-    
-    .NavigationItem a {
-        color: $color-tertiary;
-        height: 100%;
-        padding: 10px 10px;
-    }
-    
-    .NavigationItem a:active,
-    .NavigationItem a.active {
-        background-color: $color-secondary-dark;
-        color: $color-quaduprary;
-        border: 4px solid;
-        border-color: $color-alert;
+
+        & a {
+            color: $color-tertiary;
+            height: 100%;
+            padding: 10px 10px;
+        }
+
+        & a:active,
+        & a.active {
+            background-color: $color-secondary-dark;
+            color: $color-quaduprary;
+            border-color: $color-alert;
+        }
     }
 }
