@@ -6,18 +6,18 @@ import classes from './NavigationItem.module.scss';
 const NavigationItem = (props) => {
     const nodeRef = React.useRef(null);
 
-    const [enterAnimation, setEnterAnimation] = useState(false);
-    const [exitAnimation, setExitAnimation] = useState(false);
+    // const [enterAnimation, setEnterAnimation] = useState(false);
+    // const [exitAnimation, setExitAnimation] = useState(false);
 
     useEffect(() => {
         console.log(props.pkey+': props.starter=',props.starter);
-        if(props.starter===true) {
-            setEnterAnimation(true);
-            setExitAnimation(false);
-        } else {
-            setEnterAnimation(false);
-            setExitAnimation(true);
-        }
+        // if(props.starter===true) {
+        //     setEnterAnimation(true);
+        //     setExitAnimation(false);
+        // } else {
+        //     setEnterAnimation(false);
+        //     setExitAnimation(true);
+        // }
     },[props.starter]);
 
     return (
@@ -25,8 +25,8 @@ const NavigationItem = (props) => {
             key={props.pkey}
             nodeRef={nodeRef}
             in={props.starter}
-            enter={enterAnimation}
-            exit={exitAnimation}
+            enter={props.enter}
+            exit={props.exit}
             classNames={{
                 enter: classes.NavigationItemEnter,
                 enterActive: classes.NavigationItemEnterActive,

@@ -1,61 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { TransitionGroup } from "react-transition-group";
-import classes from './NavigationItems.module.scss'
-import NavigationItem from './NavigationItem/NavigationItem';
+import classes from "./NavigationItems.module.scss";
+import NavigationItem from "./NavigationItem/NavigationItem"
 // ñ
 const data = [
-    {in:false, id:"0", desc:"O mnie",href:"/photo-gallery/info"},
-    {in:false, id:"1", desc:"Galeria zdjęć",href:"/photo-gallery/photos"},
-    {in:false, id:"2", desc:"Edukacja",href:"/photo-gallery/education"}
+    {enter:false, exit:false, in:false, id:0, desc:"O mnie",href:"/photo-gallery/info"},
+    {enter:false, exit:false, in:false, id:1, desc:"Galeria zdjęć",href:"/photo-gallery/photos"},
+    {enter:false, exit:false, in:false, id:2, desc:"Edukacja",href:"/photo-gallery/education"}
 ];
 
 const NavigationItems = () => {
 
-    const [state, setState] = useState(data);
-    const [prevButton, setPrevButton] = useState(-1);
+    const [allButtons, setAllButtons] = useState(data);
+    const [prevButton, setPrevButton] = useState({
+        enter:false, exit:false,in:false, id:-1, desc:"",href:""
+    });
 
-    const stateDeepCopy = () => {
-        const copied = [];
-        for(let i=0;i<state.length;i++){
-            copied.push(Object.assign({},state[i]));
+    const allButtonsDeepUpdate = (idx, obj, updatePrevButton) => {
+        const allButtonsCpy = [];
+        for(let i=0;i<allButtons.length;i++) {
+            if(i==idx) {
+                allButtonsCpy.push(Object.assign({},obj));
+            } else if (updatePrevButton && i==prevButton.id) {
+                allButtonsCpy.push(Object.assign({},prevButton));
+            } else {
+                allButtonsCpy.push(Object.assign({},allButtons[i]));
+            };
         };
-        //console.log("Copied state=",copied);
-        return copied;
-    };
-
-    const exitAnimation = () => {
-        const x = stateDeepCopy();
-        const idx = state.findIndex((obj => {
-            return obj.id.includes("a");
-        }));
-        if(idx!==-1){
-            x[idx].id = x[idx].id.replace("a","");
-            x[idx].in = true;
-            return x;
-        } else return x;
-    };
+        setAllButtons(allButtonsCpy);
+     };
 
     const enterAnimation = (idx) => {
-        if(!idx.includes("a")) {
-            const x = exitAnimation();
-            x[idx].id += "a";
-            x[idx].in = true;
-            setState(x);
-        };
+        //this contition checks if button wasn't already animated.
+        if(allButtons[idx].id != prevButton.id) {
+            const newButton = {...allButtons[idx], ...{in:true,enter:true,exit:false}};
+            if (prevButton.id!="")
+                setPrevButton({...prevButton,...{in:false,enter:false,exit:true}});
+            console.log("newButton:",newButton) ;
+            console.log("prevButton:",prevButton);
+            allButtonsDeepUpdate(idx, newButton, prevButton.id>=0 ? true : false)
+            setPrevButton(Object.assign({},allButtons[idx]));
+        }
     };
 
     return ( 
             <div>   
             <TransitionGroup component="ul" className={classes.NavigationItems}>
-                {state.map((s) => (
+                {allButtons.map((button) => (
                     <NavigationItem
-                        starter={s.in}
-                        pkey={s.id}
+                        starter={button.in}
+                        pkey={button.id}
                         timeout={1000}
-                        click={enterAnimation.bind(this,s.id)}
-                        link={s.href}
+                        click={enterAnimation.bind(this,button.id)}
+                        link={button.href}
                     >
-                        {s.desc}
+                        {button.desc}
                     </NavigationItem>
                 ))}
             </TransitionGroup>
