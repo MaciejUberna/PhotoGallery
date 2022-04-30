@@ -6,12 +6,15 @@
     list-style: none;
     display: flex;
     flex-flow: column;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
     height: 100%;
 }
 
 @media (min-width: $min-width-small-res) {
     .NavigationItems {
         flex-flow: row;
+        flex-direction: row;
+        justify-content: space-around;
     }
 }

@@ -1,29 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import classes from './NavigationItem.module.scss';
  
-const NavigationItem = (props) => {
-    const nodeRef = React.useRef(null);
-
-    // const [enterAnimation, setEnterAnimation] = useState(false);
-    // const [exitAnimation, setExitAnimation] = useState(false);
-
-    useEffect(() => {
-        console.log(props.pkey+': props.starter=',props.starter);
-        // if(props.starter===true) {
-        //     setEnterAnimation(true);
-        //     setExitAnimation(false);
-        // } else {
-        //     setEnterAnimation(false);
-        //     setExitAnimation(true);
-        // }
-    },[props.starter,props.pkey]);
+const NavigationItem = React.forwardRef((props, ref) => {
 
     return (
         <CSSTransition
-            key={props.pkey}
-            nodeRef={nodeRef}
+            nodeRef={ref}
             in={props.starter}
             classNames={{
                 enter: classes.NavigationItemEnter,
@@ -34,33 +18,8 @@ const NavigationItem = (props) => {
                 exitDone: classes.NavigationItemExitDone,
             }}
             timeout={props.timeout}
-            //mountOnEnter
-            //unmountOnExit
-            onEnter={() => {
-                        console.log(props.pkey+': onEnter');
-                    }}
-            onEntering={() => {
-                        console.log(props.pkey+': onEntering');
-                    }}
-            onEntered={
-                        () => {
-                            console.log(props.pkey+': onEntered');
-                        }
-                    }
-            onExit={
-                () => {
-                    console.log(props.pkey+': onExit');
-                    
-                }}
-            onExiting={() => {
-                        console.log(props.pkey+': onExiting');
-                    }}
-            onExited={() => {
-                        console.log(props.pkey+': onExited');
-                    }}
         >
-            <li ref={nodeRef} className={classes.NavigationItem} onClick={props.click}>
-
+            <li ref={ref} className={classes.NavigationItem} onClick={props.click}>
                 <NavLink
                     // activeClassName={classes.active}
                     //className={({isActive}) => isActive ? classes.active : ''}
@@ -72,6 +31,6 @@ const NavigationItem = (props) => {
             </li>
         </CSSTransition>
     );
-}
+});
  
 export default NavigationItem;

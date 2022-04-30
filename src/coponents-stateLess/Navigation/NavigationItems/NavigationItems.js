@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { TransitionGroup } from "react-transition-group";
 import classes from "./NavigationItems.module.scss";
 import NavigationItem from "./NavigationItem/NavigationItem"
-// ñ
+
 const data = [
-    {in:false, id:0, desc:"O mnie",href:"/photo-gallery/info"},
-    {in:false, id:1, desc:"Galeria zdjęć",href:"/photo-gallery/photos"},
-    {in:false, id:2, desc:"Edukacja",href:"/photo-gallery/education"}
+    {in:false, id:0, desc:"About me",href:"/photo-gallery/info"},
+    {in:false, id:1, desc:"Photo gallery",href:"/photo-gallery/photos"},
+    {in:false, id:2, desc:"Some tests",href:"/photo-gallery/education"}
 ];
 
 const NavigationItems = () => {
@@ -16,12 +16,12 @@ const NavigationItems = () => {
         in:false, id:-1, desc:"",href:""
     });
 
-    const allButtonsDeepUpdate = (idx, obj, updatePrevButton) => {
+    const allButtonsDeepUpdate = (idx, obj) => {
         const allButtonsCpy = [];
         for(let i=0;i<allButtons.length;i++) {
             if(i===idx) {
                 allButtonsCpy.push(Object.assign({},obj));
-            } else if (updatePrevButton && i===prevButton.id) {
+            } else if (i===prevButton.id) {
                 allButtonsCpy.push(Object.assign({},prevButton));
             } else {
                 allButtonsCpy.push(Object.assign({},allButtons[i]));
@@ -36,9 +36,7 @@ const NavigationItems = () => {
             const newButton = {...allButtons[idx], ...{in:true}};
             if (prevButton.id !== -1)
                 setPrevButton({...prevButton,...{in:false}});
-            console.log("newButton:",newButton) ;
-            console.log("prevButton:",prevButton);
-            allButtonsDeepUpdate(idx, newButton, prevButton.id>=0 ? true : false)
+            allButtonsDeepUpdate(idx, newButton);
             setPrevButton(Object.assign({},allButtons[idx]));
         }
     };
@@ -48,8 +46,9 @@ const NavigationItems = () => {
             <TransitionGroup component="ul" className={classes.NavigationItems}>
                 {allButtons.map((button) => (
                     <NavigationItem
+                        key={button.id}
+                        ref={React.createRef()}
                         starter={button.in}
-                        pkey={button.id}
                         timeout={1000}
                         click={enterAnimation.bind(this,button.id)}
                         link={button.href}
