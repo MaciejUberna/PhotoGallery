@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import classes from './NavigationItem.module.scss';
  
-const NavigationItem = React.forwardRef((props, ref) => {
+const NavigationItem = props => {
+    const ref = useRef(null);
+
+    useEffect(() => {
+        console.log("Ref has changed: ",ref.current);
+    },[ref.current])
 
     return (
         <CSSTransition
@@ -21,7 +26,7 @@ const NavigationItem = React.forwardRef((props, ref) => {
         >
             <li ref={ref} className={classes.NavigationItem} onClick={props.click}>
                 <NavLink
-                    // activeClassName={classes.active}
+                    //activeClassName={classes.active}
                     //className={({isActive}) => isActive ? classes.active : ''}
                     to={props.link}
                     exact={props.exact}
@@ -31,6 +36,6 @@ const NavigationItem = React.forwardRef((props, ref) => {
             </li>
         </CSSTransition>
     );
-});
+}
  
 export default NavigationItem;
