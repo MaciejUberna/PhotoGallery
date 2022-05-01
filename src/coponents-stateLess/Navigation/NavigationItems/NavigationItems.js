@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import { TransitionGroup } from "react-transition-group";
 import classes from "./NavigationItems.module.scss";
+import routerButtons from "../../Router/mainMenu";
 import NavigationItem from "./NavigationItem/NavigationItem"
-
-const data = [
-    {in:false, id:0, desc:"About me",href:"/photo-gallery/info"},
-    {in:false, id:1, desc:"Photo gallery",href:"/photo-gallery/photos"},
-    {in:false, id:2, desc:"Some tests",href:"/photo-gallery/education"}
-];
 
 const NavigationItems = () => {
 
-    const [allButtons, setAllButtons] = useState(data);
+    const [allButtons, setAllButtons] = useState(routerButtons);
     const [prevButton, setPrevButton] = useState({
-        in:false, id:-1, desc:"",href:""
+        in:false, id:-1, desc:"",href:"",element:null
     });
 
     const allButtonsDeepUpdate = (idx, obj) => {
@@ -47,7 +42,6 @@ const NavigationItems = () => {
                 {allButtons.map((button) => (
                     <NavigationItem
                         key={button.id}
-                        ref={React.createRef()}
                         starter={button.in}
                         timeout={1000}
                         click={enterAnimation.bind(this,button.id)}
