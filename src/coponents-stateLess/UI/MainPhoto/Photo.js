@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Photo.module.scss';
-import photo from '../../../assets/images/CV/KwadraturaTwarz.jpg';
+import photo from '../../../assets/images/CV/woodpecker.js';
 
 const Photo = () => {
     return (
