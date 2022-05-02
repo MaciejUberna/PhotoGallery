@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TransitionGroup } from "react-transition-group";
 import classes from "./NavigationItems.module.scss";
-import routerButtons from "../../Router/mainMenu";
+import routerButtons from "../../../router/mainMenu";
 import NavigationItem from "./NavigationItem/NavigationItem"
 
 const NavigationItems = () => {

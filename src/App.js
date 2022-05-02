@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Layout from './hoc/Layout/Layout';
-import routerData from './coponents-stateLess/Router/mainMenu';
+import routerData from './router/mainMenu';
 import './App.css';
 
 const O_MNIE = React.lazy(() => {

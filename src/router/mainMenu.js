@@ -1,15 +1,15 @@
 import React from 'react';
 
 const Info = React.lazy(() => {
-    return import('../Content/AboutMe/Info');
+    return import('../coponents-stateLess/Content/AboutMe/Info');
 });
 
 const Gallery = React.lazy(() => {
-    return import('../Content/FotoGalley/Gallery');
+    return import('../coponents-stateLess/Content/FotoGalley/Gallery');
 });
 
 const Tests = React.lazy(() => {
-    return import('../Content/Tests/Tests');
+    return import('../coponents-stateLess/Content/Tests/Tests');
 });
 
 const data = [
