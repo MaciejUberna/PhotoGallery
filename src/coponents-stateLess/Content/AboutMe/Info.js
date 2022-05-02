@@ -4,7 +4,7 @@ import cls from './Info.module.scss';
 const Omnie = () => {
     return (
         <div className={cls.Main}>
-        <h2>O mnie</h2>
+        <h2>About me...</h2>
         </div>
     );
 }

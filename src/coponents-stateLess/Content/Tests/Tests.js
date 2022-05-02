@@ -4,7 +4,7 @@ import cls from './Tests.module.scss';
 const Tests = () => {
     return (
         <div className={cls.Main}>
-        <h2>Testowanie</h2> 
+        <h2>These are the tests mockup...</h2> 
         </div>
     );
 }
