@@ -19,9 +19,7 @@ const Toolbar = props => {
                         <NavigationItems/>
                     </nav>
                 </header>
-                <div className={classes.GeneralInfo__tailFiller}>
-
-                </div>
+                <div className={classes.GeneralInfo__tailFiller}/>
             </div>
         </Auxiliary>
     );
