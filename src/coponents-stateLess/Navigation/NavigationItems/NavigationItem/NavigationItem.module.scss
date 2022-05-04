@@ -1,5 +1,29 @@
 @import '../../../../sass/abstracts/variables.scss';
 
+@keyframes animateFront {
+    0% {
+        background-color: $color-secondary-light;
+    }
+    15% {
+        background-color: $color-animation;
+    }
+    30% {
+        background-color: $color-secondary-light;
+    }
+    45% {
+        background-color: $color-animation;
+    }
+    60% {
+        background-color: $color-secondary-light;
+    }
+    75% {
+        background-color: $color-animation;
+    }
+    100% {
+        background-color: $color-secondary-light;
+    }
+}
+
 .NavigationItem {
     box-sizing: border-box;
     display: inline-block;
@@ -41,7 +65,6 @@
         color: $color-primary;
         text-decoration: none;
         width: 100%;
-        //box-sizing: border-box;
         display: block;
     }
 
@@ -49,10 +72,14 @@
         color: $color-alert;
     }
 
-    & a:active,
-    & a.active {
+    & a:active {
         color: $color-quaduprary;
         background-color: $color-secondary-dark;
+    }
+
+    & a.active {
+        animation-duration: 500ms;
+        animation-name: animateFront;
     }
 }
 

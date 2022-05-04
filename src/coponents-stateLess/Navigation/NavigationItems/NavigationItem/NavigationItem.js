@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import classes from './NavigationItem.module.scss';
@@ -6,14 +6,11 @@ import classes from './NavigationItem.module.scss';
 const NavigationItem = props => {
     const ref = useRef(null);
 
-    useEffect(() => {
-        console.log("Ref has changed: ",ref.current);
-    },[ref.current])
-
     return (
         <CSSTransition
             nodeRef={ref}
             in={props.starter}
+            timeout={props.timeout}
             classNames={{
                 enter: classes.NavigationItemEnter,
                 enterActive: classes.NavigationItemEnterActive,
@@ -22,12 +19,11 @@ const NavigationItem = props => {
                 exitActive: classes.NavigationItemExitActive,
                 exitDone: classes.NavigationItemExitDone,
             }}
-            timeout={props.timeout}
         >
             <li ref={ref} className={classes.NavigationItem} onClick={props.click}>
                 <NavLink
                     //activeClassName={classes.active}
-                    //className={({isActive}) => isActive ? classes.active : ''}
+                    className={({isActive}) => isActive ? classes.active : ''}
                     to={props.link}
                     exact={props.exact}
                 >
