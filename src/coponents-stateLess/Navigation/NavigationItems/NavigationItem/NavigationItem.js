@@ -13,12 +13,12 @@ const NavigationItem = props => {
                     nodeRef={ref}
                     in={props.starter}
                     classNames={{
-                        enter: classes.NavigationItemEnter,
-                        enterActive: classes.NavigationItemEnterActive,
-                        enterDone: classes.NavigationItemEnterDone,
-                        exit: classes.NavigationItemExit,
-                        exitActive: classes.NavigationItemExitActive,
-                        exitDone: classes.NavigationItemExitDone,
+                        enter: classes.NavigationItemXEnter,
+                        enterActive: classes.NavigationItemXEnterActive,
+                        enterDone: classes.NavigationItemXEnterDone,
+                        exit: classes.NavigationItemXExit,
+                        exitActive: classes.NavigationItemXExitActive,
+                        exitDone: classes.NavigationItemXExitDone,
                     }}
                     timeout={props.timeout}
                 >
@@ -37,15 +37,15 @@ const NavigationItem = props => {
                     nodeRef={rear}
                     in={props.starter}
                     classNames={{
-                        appear: classes.NavigationItemRAppear,
-                        appearActive: classes.NavigationItemRAppearActive,
-                        appearDone: classes.NavigationItemRAppearDone,
-                        enter: classes.NavigationItemREnter,
-                        enterActive: classes.NavigationItemREnterActive,
-                        enterDone: classes.NavigationItemREnterDone,
-                        exit: classes.NavigationItemRExit,
-                        exitActive: classes.NavigationItemRExitActive,
-                        exitDone: classes.NavigationItemRExitDone,
+                        appear: classes.NavigationItemYAppear,
+                        appearActive: classes.NavigationItemYAppearActive,
+                        appearDone: classes.NavigationItemYAppearDone,
+                        enter: classes.NavigationItemYEnter,
+                        enterActive: classes.NavigationItemYEnterActive,
+                        enterDone: classes.NavigationItemYEnterDone,
+                        exit: classes.NavigationItemYExit,
+                        exitActive: classes.NavigationItemYExitActive,
+                        exitDone: classes.NavigationItemYExitDone,
                     }}
                     timeout={props.timeout}
                     mountOnEnter={true}

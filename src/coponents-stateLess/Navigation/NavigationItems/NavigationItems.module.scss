@@ -19,10 +19,8 @@
         gap: 1rem;
         grid-auto-flow: column;
         grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
+
         // flex-direction: row;
         // justify-content: space-around;
-    }
-    .col1of3 {
-        width: calc((100% - (#{$menu-gutter}*2))/3);
     }
 }
