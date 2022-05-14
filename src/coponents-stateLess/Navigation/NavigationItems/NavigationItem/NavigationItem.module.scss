@@ -26,10 +26,10 @@
 
 .NavigationItem {
     box-sizing: border-box;
-    display: inline-block;
-    width: 100%;
-    //backface-visibility: hidden;
-    transform-origin: center center 0;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    
 
     &Enter {
         transform: rotateY(0deg);
@@ -57,27 +57,92 @@
         transform: rotateY(0deg);
     }
 
-    & a {
-        margin-left: 7px;
-        margin-right: 7px;
-        border-radius: 15%;
-        background-color: $color-secondary-light;
-        color: $color-primary;
-        text-decoration: none;
+    &RAppear {
+        transform: rotateY(180deg);
+    };
+
+    &RAppearActive {
+        transform: rotateY(180deg);
+    }
+
+    &RAppearDone {
+        transform: rotateY(180deg);
+    }
+
+    &REnter {
+        transform: rotateY(180deg);
+    }
+
+    &REnterActive {
+        transform: rotateY(0deg);
+        transition: transform 500ms linear
+    }
+
+    &REnterDone {
+        transform: rotateY(0deg);
+    }
+
+    &RExit {
+        transform: rotateY(0deg);
+    }
+
+    &RExitActive {
+        transform: rotateY(180deg);
+        transition: transform 500ms linear;
+    }
+
+    &RExitDone {
+        transform: rotateY(180deg);
+    }
+
+    &X {
+        transform-origin: center center 0;
+        backface-visibility: hidden;
         width: 100%;
+        height: auto;
         display: block;
     }
 
-    & a:hover {
+    &Y {
+        transform-origin: center center 0;
+        position: absolute;
+        backface-visibility: hidden;
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    &X a {
+        text-decoration: none;
+        border-radius: 15%;
+        background-color: $color-secondary-light;
+        color: $color-primary       
+    }
+
+
+    &Y p {
+        text-decoration: none;
+        border-radius: 15%;
+        background-color:  $color-secondary-dark;
+        color: $color-quaduprary;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -webkit-touch-callout : none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+
+    &X a:hover {
         color: $color-alert;
     }
 
-    & a:active {
+    &X a:active {
         color: $color-quaduprary;
         background-color: $color-secondary-dark;
     }
 
-    & a.active {
+    &X a.active {
         animation-duration: 500ms;
         animation-name: animateFront;
     }

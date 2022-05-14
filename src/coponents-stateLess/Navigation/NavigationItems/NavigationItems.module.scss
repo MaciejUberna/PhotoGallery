@@ -1,6 +1,8 @@
 @import '../../../sass/abstracts/variables.scss';
 
 .NavigationItems {
+    perspective: 150rem;
+    -moz-perspective: 150rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -13,8 +15,14 @@
 
 @media (min-width: $min-width-small-res) {
     .NavigationItems {
-        flex-flow: row;
-        flex-direction: row;
-        justify-content: space-around;
+        display: grid;
+        gap: 1rem;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
+        // flex-direction: row;
+        // justify-content: space-around;
+    }
+    .col1of3 {
+        width: calc((100% - (#{$menu-gutter}*2))/3);
     }
 }

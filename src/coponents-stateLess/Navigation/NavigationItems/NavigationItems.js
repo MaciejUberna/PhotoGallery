@@ -37,21 +37,19 @@ const NavigationItems = () => {
     };
 
     return ( 
-            <div>   
-            <TransitionGroup component="ul" className={classes.NavigationItems}>
-                {allButtons.map((button) => (
-                    <NavigationItem
-                        key={button.id}
-                        starter={button.in}
-                        timeout={1000}
-                        click={enterAnimation.bind(this,button.id)}
-                        link={button.href}
-                    >
-                        {button.desc}
-                    </NavigationItem>
-                ))}
-            </TransitionGroup>
-            </div>
+        <TransitionGroup component="ul" className={classes.NavigationItems}>
+            {allButtons.map((button) => (
+                <NavigationItem
+                    key={button.id}
+                    starter={button.in}
+                    timeout={1000}
+                    click={enterAnimation.bind(this,button.id)}
+                    link={button.href}
+                >
+                    {button.desc}
+                </NavigationItem>
+            ))}
+        </TransitionGroup>
     );
 };
  
