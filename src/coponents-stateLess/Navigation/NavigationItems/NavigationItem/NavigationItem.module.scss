@@ -30,12 +30,14 @@
     flex-direction: row;
     position: relative;
 
-    &X {
+    &A {
         transform-origin: center center 0;
         backface-visibility: hidden;
         width: 100%;
         height: auto;
         display: block;
+        margin-top: 15px;
+        margin-bottom: 15px;
 
         &Enter {
             transform: rotateY(0deg);
@@ -43,7 +45,7 @@
     
         &EnterActive {
             transform: rotateY(180deg);
-            transition: transform 500ms linear
+            transition: transform 500ms ease-in;
         }
     
         &EnterDone {
@@ -56,7 +58,7 @@
     
         &ExitActive {
             transform: rotateY(0deg);
-            transition: transform 500ms linear;
+            transition: transform 500ms ease-in;
         }
     
         &ExitDone {
@@ -64,33 +66,35 @@
         }
     }
 
-    &Y {
+    &P {
         transform-origin: center center 0;
         position: absolute;
         backface-visibility: hidden;
         width: 100%;
         height: auto;
         display: block;
+        margin-top: 15px;
+        margin-bottom: 15px;
 
         &Appear {
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
         };
     
         &AppearActive {
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
         }
     
         &AppearDone {
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
         }
     
         &Enter {
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
         }
     
         &EnterActive {
             transform: rotateY(0deg);
-            transition: transform 500ms linear
+            transition: transform 500ms ease-in;
         }
     
         &EnterDone {
@@ -102,53 +106,60 @@
         }
     
         &ExitActive {
-            transform: rotateY(180deg);
-            transition: transform 500ms linear;
+            transform: rotateY(-180deg);
+            transition: transform 500ms ease-in;
         }
     
         &ExitDone {
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
         }
     }
 
-    &X a {
+    &A a {
         text-decoration: none;
         border-radius: 15%;
+        padding: 10px;
+        margin-left: 7px;
+        margin-right: 7px;
         background-color: $color-secondary-light;
         color: $color-primary;
         -webkit-user-select: none;
         -khtml-user-select: none;
         -webkit-touch-callout : none;
         -moz-user-select: none;
+        -ms-user-select: none;
         -o-user-select: none;
         user-select: none;   
     }
 
 
-    &Y p {
+    &P p {
         text-decoration: none;
         border-radius: 15%;
         padding: 10px;
+        margin-left: 7px;
+        margin-right: 7px;
         background-color:  $color-secondary-dark;
         color: $color-quaduprary;
         -webkit-user-select: none;
         -khtml-user-select: none;
         -webkit-touch-callout : none;
         -moz-user-select: none;
+        -ms-user-select: none;
         -o-user-select: none;
         user-select: none;
     }
 
-    &X a:hover {
+    &A a:hover {
         color: $color-alert;
     }
 
-    &X a:active {
+    &A a:active {
         color: $color-quaduprary;
         background-color: $color-secondary-dark;
     }
 
-    &X a.active {
+    &A a.active {
         animation-duration: 500ms;
         animation-name: animateFront;
     }
@@ -163,14 +174,14 @@
         width: auto;
         align-items: center;
 
-        & a {
+        &A a {
             color: $color-tertiary;
             height: 100%;
             padding: 10px 10px;
         }
 
-        & a:active,
-        & a.active {
+        &A a:active,
+        &A a.active {
             background-color: $color-secondary-dark;
             color: $color-quaduprary;
             border-color: $color-alert;

@@ -15,12 +15,12 @@
 
 @media (min-width: $min-width-small-res) {
     .NavigationItems {
-        display: grid;
-        gap: 1rem;
-        grid-auto-flow: column;
-        grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
-
-        // flex-direction: row;
-        // justify-content: space-around;
+        // display: grid;
+        // gap: 1rem;
+        // grid-auto-flow: column;
+        // grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 }

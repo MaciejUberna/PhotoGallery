@@ -13,16 +13,16 @@ const NavigationItem = props => {
                     nodeRef={ref}
                     in={props.starter}
                     classNames={{
-                        enter: classes.NavigationItemXEnter,
-                        enterActive: classes.NavigationItemXEnterActive,
-                        enterDone: classes.NavigationItemXEnterDone,
-                        exit: classes.NavigationItemXExit,
-                        exitActive: classes.NavigationItemXExitActive,
-                        exitDone: classes.NavigationItemXExitDone,
+                        enter: classes.NavigationItemAEnter,
+                        enterActive: classes.NavigationItemAEnterActive,
+                        enterDone: classes.NavigationItemAEnterDone,
+                        exit: classes.NavigationItemAExit,
+                        exitActive: classes.NavigationItemAExitActive,
+                        exitDone: classes.NavigationItemAExitDone,
                     }}
                     timeout={props.timeout}
                 >
-                    <div ref={ref} className={classes.NavigationItemX}>
+                    <div ref={ref} className={classes.NavigationItemA}>
                         <NavLink
                             //activeClassName={classes.active}
                             className={({isActive}) => isActive ? classes.active : ''}
@@ -37,21 +37,21 @@ const NavigationItem = props => {
                     nodeRef={rear}
                     in={props.starter}
                     classNames={{
-                        appear: classes.NavigationItemYAppear,
-                        appearActive: classes.NavigationItemYAppearActive,
-                        appearDone: classes.NavigationItemYAppearDone,
-                        enter: classes.NavigationItemYEnter,
-                        enterActive: classes.NavigationItemYEnterActive,
-                        enterDone: classes.NavigationItemYEnterDone,
-                        exit: classes.NavigationItemYExit,
-                        exitActive: classes.NavigationItemYExitActive,
-                        exitDone: classes.NavigationItemYExitDone,
+                        appear: classes.NavigationItemPAppear,
+                        appearActive: classes.NavigationItemPAppearActive,
+                        appearDone: classes.NavigationItemPAppearDone,
+                        enter: classes.NavigationItemPEnter,
+                        enterActive: classes.NavigationItemPEnterActive,
+                        enterDone: classes.NavigationItemPEnterDone,
+                        exit: classes.NavigationItemPExit,
+                        exitActive: classes.NavigationItemPExitActive,
+                        exitDone: classes.NavigationItemPExitDone,
                     }}
                     timeout={props.timeout}
                     mountOnEnter={true}
                     unmountOnExit={true}
                 >
-                    <div ref={rear} className={classes.NavigationItemY}>
+                    <div ref={rear} className={classes.NavigationItemP}>
                         <p>{props.children}</p>
                     </div>
                 </CSSTransition>
