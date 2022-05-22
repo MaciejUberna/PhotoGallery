@@ -3,8 +3,16 @@
 .Main {
     width: 100%;
     height: auto;
+    background-color: black;
+    color: white;
 
     & h2 {
         margin-left: 1rem;
     }
+
+    & img {
+        width: 65%;
+        height: auto;
+    }
+
 }
