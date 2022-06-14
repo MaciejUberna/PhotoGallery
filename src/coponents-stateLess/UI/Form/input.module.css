@@ -1,0 +1,205 @@
+.Input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.Label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.InputLabel {
+  display: block;
+  text-align: left;
+  font-size: .9rem;
+  margin-bottom: 8px;
+  transition: all .3s;
+}
+
+.InputElement:placeholder-shown + .InputLabel {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2rem);
+}
+
+.CheckboxUseTerms {
+  color: #8f5C2C;
+  cursor: pointer;
+}
+
+/* Customize the label (the container) */
+.CheckboxLabel {
+    display: block;
+    position: relative;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .CheckboxLabel input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .Checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+
+  .CheckboxText {
+    position: relative;
+    left: 8px;
+  } 
+  
+  /* On mouse-over, add a grey background color
+  /*.CheckboxLabel:hover input ~ .Checkmark */
+  input:hover ~ .Checkmark{
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a color background */
+/*.CheckboxLabel input:checked ~ .Checkmark */
+input:checked ~ .Checkmark {
+    /* background-color: #2196F3; */
+    background-color: #8f5C2C;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .Checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  /* .CheckboxLabel input:checked ~ .Checkmark:after */
+  input:checked ~ .Checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .CheckboxLabel .Checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+.InputElement {
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.InputElement:focus {
+    outline: none;
+    background-color: #ccc;
+    border-bottom: 3px solid orangered;
+}
+
+.InputElement:disabled {
+    background-color: #b4b184;
+}
+
+.Invalid {
+  border: 1px solid red;
+  background-color: #FDA49A;
+}
+
+.ValidationError {
+    color: red;
+    margin: 5px 0;
+}
+
+.ValidationHelp {
+  color: red;
+  font-size: .8rem;
+}
+
+
+
+.Radio {
+  font-size: 1rem;
+  text-align: left;
+  position: relative;
+  display: block;
+  padding: .4rem 0 0 2.4rem;
+  top: .4rem;
+}
+
+.RadioInput {
+  z-index: 10;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  opacity: 1;
+  left: 2rem;
+  top: -.2rem;
+  opacity: 0;
+}
+
+.RadioLabel {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.RadioButton{
+  height: 1.3rem;
+  width: 1.3rem;
+  border: 3px solid #703B09;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+
+.RadioButton::after {
+      content: "";
+      height: .8rem;
+      width: .8rem;
+      display: block;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background-color: black;
+      opacity: 0;
+}
+
+.RadioLabel:hover .RadioButton::after {
+  opacity: 1;
+  background-color: #ddd;
+}
+
+.RadioInput:checked + .RadioLabel .RadioButton::after {
+  opacity: 1;
+  background-color: #8f5C2C;
+}

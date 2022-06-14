@@ -1,12 +1,41 @@
 import React from 'react';
 import Photo from '../../UI/MainPhoto/Photo';
 import PropTypes from 'prop-types';
+import userData from '../../../assets/config/userConfig';
 import classes from './Toolbar.module.scss';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
  
 const Toolbar = props => {
+    let contextMenu = (<p>Loading...</p>);
+    const subPathMatcher = str => {
+        switch(true) {
+            case /^\/photo-gallery\/info/.test(str):
+                contextMenu = (<React.Fragment>
+                    <p>Name: {userData.name}</p>
+                    <p>Surname: {userData.surname} </p>
+                    <p>Email: {userData.email}</p>
+                    <p>Tel: {userData.phone}</p>
+                </React.Fragment>);
+                break;
+            case /^\/photo-gallery\/photos/.test(str):
+                contextMenu = (
+                    <p>Photos mockup...</p>
+                );
+                break;
+            case /^\/photo-gallery\/blog/.test(str):
+                contextMenu = (
+                    <p>Blog mockup...</p>
+                );
+                break;
+            default:
+                contextMenu = (
+                    <p>Unknown pathname match.</p>
+                );
+        };
+    };
+    subPathMatcher(window.location.pathname);
     return (
         <Auxiliary>
             <div className={classes.GeneralInfo}>
@@ -20,6 +49,9 @@ const Toolbar = props => {
                     </nav>
                 </header>
                 <div className={classes.GeneralInfo__tailFiller}/>
+            </div>
+            <div className={classes.Toolbar}>
+                {contextMenu}
             </div>
         </Auxiliary>
     );
