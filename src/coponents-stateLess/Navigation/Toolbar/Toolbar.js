@@ -1,7 +1,7 @@
 import React from 'react';
 import Photo from '../../UI/MainPhoto/Photo';
+import AboutMe from './AboutMeToolbar/AboutMe';
 import PropTypes from 'prop-types';
-import userData from '../../../assets/config/userConfig';
 import classes from './Toolbar.module.scss';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
@@ -12,12 +12,7 @@ const Toolbar = props => {
     const subPathMatcher = str => {
         switch(true) {
             case /^\/photo-gallery\/info/.test(str):
-                contextMenu = (<React.Fragment>
-                    <p>Name: {userData.name}</p>
-                    <p>Surname: {userData.surname} </p>
-                    <p>Email: {userData.email}</p>
-                    <p>Tel: {userData.phone}</p>
-                </React.Fragment>);
+                contextMenu = <AboutMe/>;
                 break;
             case /^\/photo-gallery\/photos/.test(str):
                 contextMenu = (

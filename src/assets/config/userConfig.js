@@ -1,7 +1,7 @@
 
 export default {
     name : "Woody",
-    surname : "WoodPecker",
+    surname : "Woodpecker",
     email : "template@sharklazers.com",
-    phone : "+48-555-65-65-65"
+    phone : "555-65-65-65"
 };

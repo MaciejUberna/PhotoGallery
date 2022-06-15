@@ -1,2 +1,26 @@
-@import '../../../sass/abstracts/variables.scss';
+@import '../../../../sass/abstracts/variables.scss';
+
+.Main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    &_Start {
+        background-color: $color-secondary-dark;
+        color: $color-alert;
+        border-radius: 5%
+    }
+
+    &_Middle {
+        color: black;
+    }
+
+    &_End {
+        background-color: $color-secondary-dark;
+        color: $color-alert;
+        border-radius: 5%;
+    }
+}
 
