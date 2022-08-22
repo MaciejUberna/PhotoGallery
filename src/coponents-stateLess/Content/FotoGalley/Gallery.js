@@ -1,50 +1,136 @@
 import React from 'react';
+import { useParams, useLocation, NavLink, Link } from 'react-router-dom';
 import userConfig from '../../../assets/config/userConfig';
 import cls from  './Gallery.module.scss';
 
-const Projekty = () => {
+const Gallery = () => {
 
-    function importDirs(dir) {
-        let images = [];
-        dir.keys().map((item) => { 
-            //console.log('dir:',dir(item));
-            images.unshift(dir(item)); 
-            return null;
-        });
-        return images;
+    const location = useLocation();
+    const params = useParams();
+    let dynamicMenu = null
+    let header = "Loading gallery..."
+
+    const loadImages = images => {
+        if(images !== null && images!='') {
+            let href = location.pathname;
+            return (
+                <div className={cls.MainB}>
+                    {
+                        images.map( (image, index) =>
+                            <Link to={href+'/'+image} key={'pic'+index} >
+                                <img 
+                                src={require(
+                                '../../../assets/'
+                                +userConfig.startGalleryDir
+                                +'/'+params.year
+                                +'/'+params.month
+                                +'/'+params.day
+                                +'/'+image)} 
+                                alt={'obrazek '+index} 
+                            />
+                            </Link>
+                        )
+                    }
+                </div>
+            )
+        } else {return null;}
     }
 
-    const dirs = importDirs(
-        require.context('../../../assets/images/Photos/2022/05/31', false, /^.+$/)
-    );
+    const showImage = _ => {
+        return (
+            <div className={cls.MainC}>
+                <img 
+                    src={require(
+                            '../../../assets/'
+                            +userConfig.startGalleryDir
+                            +'/'+params.year
+                            +'/'+params.month
+                            +'/'+params.day
+                            +'/'+params.pic
+                    )} 
+                    alt={'obr_'+params.pic} 
+                />
+            </div>
+        );
+}
 
-    // const images = importAll(
-    //     require.context('../../../assets/images/2022/05/20', false, /\.(png|jpe?g)$/)
-    // );
-    // return (
-    //     <div className={`${cls.Main}`}>
-    //         <h2>Here are test images</h2>
-    //         <React.Fragment>
-    //             {images.map(
-    //                 (img, idx) => (
-    //                     <img alt={"obrazek"+idx} key={"obrs"+idx} src={img}/>
-    //                 )
-    //             )}
-    //         </React.Fragment>
-    //     </div>
-    // );
+    const loadDirs = (dirList) => {
+        if(dirList !== null && dirList !== '') {
+            let href = location.pathname;
+            return (
+                <div className={cls.MainA}>
+                    {
+                        dirList.map( dir =>
+                            <NavLink
+                            className={({isActive}) => isActive ? cls.active : ''}
+                            to={href+'/'+dir}
+                            key={href+'/'+dir}
+                            >
+                                {dir}
+                            </NavLink>
+                        )
+                    }
+                </div>
+            );
+        } else {return null;}
+    }
+
+    if (params.year) {
+        if(params.month) {
+            if(params.day) {
+                if(params.pic) {
+                    dynamicMenu = showImage();
+                    header="Current image:  "+params.pic;
+                } else {
+                    const images = require(
+                        '../../../assets/'
+                        +userConfig.startGalleryDir
+                        +'/'+params.year
+                        +'/'+params.month
+                        +'/'+params.day
+                        +'/imageloader'
+                        ).default;
+                    dynamicMenu = loadImages(images);
+                    header="Choose photo to enlarge:";
+                }
+            } else {
+                const dirs = require(
+                '../../../assets/'
+                +userConfig.startGalleryDir
+                +'/'+params.year
+                +'/'+params.month
+                +'/dirsloader'
+                ).default;
+                dynamicMenu = loadDirs(dirs); 
+                header="Pick day of the month:";             
+            }
+        } else {
+            const dirs = require(
+            '../../../assets/'
+            +userConfig.startGalleryDir
+            +'/'+params.year
+            +'/dirsloader'
+            ).default;
+            dynamicMenu = loadDirs(dirs);
+            header="Pick month from which photos will be displayed:";
+        }
+    } else {
+        const dirs = require(
+            '../../../assets/'
+            +userConfig.startGalleryDir
+            +'/dirsloader'
+        ).default;
+        dynamicMenu = loadDirs(dirs);
+        header="Pick year from which photos will be displayed:";
+    }
 
     return (
         <div className={`${cls.Main}`}>
-            <h2>Test dirs</h2>
+            <h2>{header}</h2>
             <React.Fragment>
-                {dirs.map(
-                    (path, idx) => (
-                        <p key={"obrs"+idx}> {path} </p>
-                    )
-                )}
+                {dynamicMenu}
             </React.Fragment>
         </div>
     );
 }
-export default Projekty;
+export default Gallery;
