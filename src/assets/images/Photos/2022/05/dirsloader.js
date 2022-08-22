@@ -1,4 +1,4 @@
 const dirs = [ 
-31 
+'31' 
 ]; 
 export default dirs; 

@@ -1,4 +1,4 @@
 const dirs = [ 
-06 
+'06' 
 ]; 
 export default dirs; 
