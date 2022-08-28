@@ -1,5 +1,6 @@
-import React from 'react';
-import { useParams, useLocation, NavLink, Link } from 'react-router-dom';
+import React, {useRef, useEffect} from 'react';
+import { useParams, useLocation, useNavigate, NavLink, Link } from 'react-router-dom';
+import { useStore } from '../../../store-hooks/store';
 import userConfig from '../../../assets/config/userConfig';
 import cls from  './Gallery.module.scss';
 
@@ -7,17 +8,34 @@ const Gallery = () => {
 
     const location = useLocation();
     const params = useParams();
-    let dynamicMenu = null
-    let header = "Loading gallery..."
+    const navigate = useNavigate();
+    const navigateRef = useRef({ navigate });
+    const savedParams = useStore()[0];
+    const dispatch = useStore(false)[1];
+    let dynamicMenu = null;
+    let header = "Loading gallery...";
 
-    const loadImages = images => {
-        if(images !== null && images!='') {
-            let href = location.pathname;
+    console.log('savedParams: ',savedParams);
+
+    useEffect(() => {
+        navigateRef.current.navigate = navigate;
+        if(
+            savedParams.currUrl !== '' &&
+            savedParams.currUrl.length > location.pathname.length
+        ) {
+            console.log('Xlocation.path:',location.pathname,'XsavedPath:',savedParams.currUrl);
+            navigateRef.current.navigate(savedParams.currUrl, { replace: true });
+        };
+    },[navigate,location.pathname,savedParams.currUrl]);
+
+    const loadImages = (images) => {
+        if(images !== null && images!=='') {
+            const url = location.pathname;
             return (
                 <div className={cls.MainB}>
                     {
                         images.map( (image, index) =>
-                            <Link to={href+'/'+image} key={'pic'+index} >
+                            <Link to={url+'/'+image} key={'pic'+index} >
                                 <img 
                                 src={require(
                                 '../../../assets/'
@@ -52,19 +70,19 @@ const Gallery = () => {
                 />
             </div>
         );
-}
+    }
 
     const loadDirs = (dirList) => {
         if(dirList !== null && dirList !== '') {
-            let href = location.pathname;
+            const url = location.pathname;
             return (
                 <div className={cls.MainA}>
                     {
                         dirList.map( dir =>
                             <NavLink
                             className={({isActive}) => isActive ? cls.active : ''}
-                            to={href+'/'+dir}
-                            key={href+'/'+dir}
+                            to={url+'/'+dir}
+                            key={url+'/'+dir}
                             >
                                 {dir}
                             </NavLink>
@@ -76,9 +94,25 @@ const Gallery = () => {
     }
 
     if (params.year) {
+            if(params.year !== savedParams.params[0]) {
+                dispatch('UPDATE_GALLERY_YEAR',params.year);
+                dispatch('UPDATE_URL',location.pathname);
+            }
         if(params.month) {
+            if(params.month !== savedParams.params[1]) {
+                dispatch('UPDATE_GALLERY_MONTH',params.month);
+                dispatch('UPDATE_URL',location.pathname);
+            }
             if(params.day) {
+                if(params.day !== savedParams.params[2]) {
+                    dispatch('UPDATE_GALLERY_DAY',params.day);
+                    dispatch('UPDATE_URL',location.pathname);
+                }
                 if(params.pic) {
+                    if(params.pic !== savedParams.params[3]) {
+                        dispatch('UPDATE_GALLERY_PIC',params.pic);
+                        dispatch('UPDATE_URL',location.pathname);
+                    }
                     dynamicMenu = showImage();
                     header="Current image:  "+params.pic;
                 } else {
@@ -102,7 +136,7 @@ const Gallery = () => {
                 +'/dirsloader'
                 ).default;
                 dynamicMenu = loadDirs(dirs); 
-                header="Pick day of the month:";             
+                header="Pick a day of the month:";             
             }
         } else {
             const dirs = require(
@@ -112,7 +146,7 @@ const Gallery = () => {
             +'/dirsloader'
             ).default;
             dynamicMenu = loadDirs(dirs);
-            header="Pick month from which photos will be displayed:";
+            header="Pick the month from which photos will be displayed:";
         }
     } else {
         const dirs = require(
@@ -121,7 +155,7 @@ const Gallery = () => {
             +'/dirsloader'
         ).default;
         dynamicMenu = loadDirs(dirs);
-        header="Pick year from which photos will be displayed:";
+        header="Pick the year from which photos will be displayed:";
     }
 
     return (
@@ -130,6 +164,7 @@ const Gallery = () => {
             <React.Fragment>
                 {dynamicMenu}
             </React.Fragment>
+            <div></div>
         </div>
     );
 }

@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import globalGalleryRouterParams from './store-hooks/paramsGalleryStore';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
+
+globalGalleryRouterParams();
 
 ReactDOM.render(
   <BrowserRouter>

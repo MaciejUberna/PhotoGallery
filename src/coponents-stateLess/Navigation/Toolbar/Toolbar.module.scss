@@ -54,9 +54,47 @@
     width: 100vw;
     top: 30vh;
     position: fixed;
+    display: flex;
+    justify-content: space-between;
     background-color: $color-secondary-light;
     z-index: 90;
+
+    & p {
+        font-weight: 900;
+    }
 }
+
+.arrowRight {
+    width: 0; 
+    height: 0;
+    cursor: default;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;  
+    border-left: 20px solid lightslategray;
+
+    &_A {
+        cursor: pointer;
+        border-left: 20px solid lightgreen;
+    }
+  }
+  
+.arrowLeft {
+    width: 0; 
+    height: 0;
+    cursor: default;
+    margin-left: auto;
+    margin-right: auto; 
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;   
+    border-right: 20px solid lightslategray; 
+
+    &_A {
+        cursor: pointer;
+        border-right: 20px solid lightgreen;
+    }
+  }
 
 @media (max-width: $max-width-intermediate-res) {
 

@@ -11,7 +11,7 @@ export const useStore = (shouldListen = true) => {
         const newState = actions[actionIndentifier](globalState, payload);
         globalState = {...globalState, ...newState};
 
-        for(listener of listeners) {
+        for(const listener of listeners) {
             listener(globalState);
         };
     };
